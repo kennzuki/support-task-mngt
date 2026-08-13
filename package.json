@@ -1,9 +1,13 @@
 {
   "name": "support-task-mngt",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
+    "dev": "tsx watch src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "dev:build": "tsc --watch"
   },
   "keywords": [],
   "author": "",

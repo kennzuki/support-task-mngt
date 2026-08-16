@@ -3,7 +3,7 @@ import { pool } from "../lib/db";
 import fs from "node:fs";
 import { logger } from "../lib/logger";
 
-const MIGRATIONS_DIR = path.join(process.cwd(), "migrations");
+const MIGRATIONS_DIR = path.join(__dirname, "..", "migrations");
 
 const CREATE_MIGRATIONS_TABLE_SQL = `
 CREATE TABLE IF NOT EXISTS migrations (

@@ -6,7 +6,10 @@
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev:build": "tsc --watch"
+    "dev:build": "tsc --watch",
+    "db:migrate": "tsx src/scripts/migrate.ts",
+    "docker-up": "docker-compose up -d",
+    "docker-down": "docker-compose down"
   },
   "keywords": [],
   "author": "",

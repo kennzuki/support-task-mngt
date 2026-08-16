@@ -1,6 +1,6 @@
 
 CREATE TABLE support_tasks (
-    id uuid DEFAULT gen_random_uuid(),
+    id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
     
     title VARCHAR(255) NOT NULL,
    

@@ -1,4 +1,4 @@
-import { appError } from "../errors/AppError";
+import { AppError } from "../errors/AppError";
 import { signAccessToken } from "../lib/jwt";
 import { findUserByEmail, createUser, findUserByEmailWithPassword } from "../repositories/user.repository";
 import bycrpt from "bcrypt";
@@ -29,7 +29,7 @@ export async function registerUser(email: string, password: string): Promise<voi
 
 export async function loginUser(email: string, password: string): Promise<{ accessToken: string }> {
     if (!email || !password) {
-        throw new appError(400,'Email and password are required for login.');
+        throw new AppError(400,'Email and password are required for login.');
     }
 
     const normalizeEmail = email.toLowerCase().trim();
@@ -37,13 +37,13 @@ export async function loginUser(email: string, password: string): Promise<{ acce
     const user = await findUserByEmailWithPassword(normalizeEmail);
 
     if (!user?.password_hash) {
-        throw new appError(401, 'Invalid email or password.');
+        throw new AppError(401, 'Invalid email or password.');
     }
 
     const isPasswordValid = await bycrpt.compare(password, user.password_hash);
 
     if (!isPasswordValid) {
-        throw new appError(401, 'Invalid email or password.');
+        throw new AppError(401, 'Invalid email or password.');
     }
 
     const accessToken=signAccessToken({
